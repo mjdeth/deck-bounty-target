@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Acme Portal - Sign in</title></head>
+<body>
+<h1>Acme Portal</h1>
+<div id="login-box">
+  <form id="login-form">
+    <label>Email <input id="email" name="email" type="email" autocomplete="username"></label><br>
+    <label>Password <input id="password" name="password" type="password" autocomplete="current-password"></label><br>
+    <button type="submit">Sign in</button>
+  </form>
+  <p id="error" style="color:red"></p>
+</div>
+<div id="dashboard" style="display:none">
+  <h2>Dashboard MARKER-A-DASHBOARD-4815</h2>
+  <p>Welcome back, Bounty User.</p>
+  <p>Latest statement: <a href="statement.txt">statement.txt</a></p>
+  <p>Account balance: USD 1,234.56</p>
+</div>
+<script>
+document.getElementById('login-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var em = document.getElementById('email').value;
+  var pw = document.getElementById('password').value;
+  var ok = (em === 'bounty-a-user@example.com' && pw === 'MarkerPass-A-7f3d9c') ||
+           (em === 'bounty-b-user@example.org' && pw === 'MarkerPass-B-51ae02');
+  if (ok) {
+    document.getElementById('login-box').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+  } else {
+    document.getElementById('error').textContent = 'Invalid email or password.';
+  }
+});
+</script>
+</body>
+</html>
